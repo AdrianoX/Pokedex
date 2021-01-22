@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Toolbar, Grid } from "@material-ui/core";
+import { AppBar, Toolbar, Grid, Card, CardContent } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 // import classes from "*.module.css";
 
@@ -11,6 +11,16 @@ const columnStyles = makeStyles({
   },
 });
 
+const singlePokemonCard = () => {
+  return (
+    <Grid item xs={4}>
+      <Card>
+        <CardContent>First Single Pokemon Card</CardContent>
+      </Card>
+    </Grid>
+  );
+};
+
 const allPokemons = () => {
   const classes = columnStyles();
   return (
@@ -18,16 +28,10 @@ const allPokemons = () => {
       <AppBar position="static">
         <Toolbar />
       </AppBar>
-      <Grid container spacing={2} className={classes.columnStyles}>
-        <Grid item xs={4}>
-          First Poke Column
-        </Grid>
-        <Grid item xs={4}>
-          Second Poke Column
-        </Grid>
-        <Grid item xs={4}>
-          Third Poke Column
-        </Grid>
+      <Grid container spacing={2} className={classes.allPokemonsBox}>
+        {singlePokemonCard()}
+        {singlePokemonCard()}
+        {singlePokemonCard()}
       </Grid>
     </>
   );
