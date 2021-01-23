@@ -5,7 +5,9 @@ import {
   Grid,
   Card,
   CardContent,
+  CardMedia,
   CircularProgress,
+  Typography,
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 // import classes from "*.module.css";
@@ -17,21 +19,42 @@ const columnStyles = makeStyles({
     paddingLeft: "75px",
     paddingTop: "35px",
   },
+  cardMedia: {
+    margin: "auto",
+  },
+  cardContent: {
+    textAlign: "center",
+  },
 });
 
-const singlePokemonCard = (pokemonId) => {
-  return (
-    <Grid item xs={4} key={pokemonId}>
-      <Card>
-        <CardContent>First Single Pokemon Card</CardContent>
-      </Card>
-    </Grid>
-  );
-};
+const UpperCaseLetterName = (name) =>
+  name.charAt(0).toUpperCase() + name.slice(1);
 
 const AllPokemons = () => {
   const classes = columnStyles();
   const [pokemonData, setPokemonData] = useState(mainData);
+
+  const singlePokemonCard = (pokemonId) => {
+    console.log(pokemonData[`${pokemonId}`]);
+    const { id, name } = pokemonData[`${pokemonId}`];
+    const sprite = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${id}.png`;
+
+    return (
+      <Grid item xs={4} key={pokemonId}>
+        <Card>
+          <CardMedia
+            className={classes.cardMedia}
+            image={sprite}
+            style={{ width: "130px", height: "130px" }}
+          />
+          <CardContent className={classes.cardContent}>
+            <Typography>{`${id}. ${UpperCaseLetterName(name)}`}</Typography>
+          </CardContent>
+        </Card>
+      </Grid>
+    );
+  };
+
   return (
     <>
       <AppBar position="static">
