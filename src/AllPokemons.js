@@ -19,9 +19,9 @@ const columnStyles = makeStyles({
   },
 });
 
-const singlePokemonCard = () => {
+const singlePokemonCard = (pokemonId) => {
   return (
-    <Grid item xs={4}>
+    <Grid item xs={4} key={pokemonId}>
       <Card>
         <CardContent>First Single Pokemon Card</CardContent>
       </Card>
@@ -39,7 +39,9 @@ const AllPokemons = () => {
       </AppBar>
       {pokemonData ? (
         <Grid container spacing={2} className={classes.allPokemonsBox}>
-          {Object.keys(pokemonData).map((pokemonId) => AllPokemons(pokemonId))}
+          {Object.keys(pokemonData).map((pokemonId) =>
+            singlePokemonCard(pokemonId)
+          )}
         </Grid>
       ) : (
         <CircularProgress />
