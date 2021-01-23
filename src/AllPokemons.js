@@ -12,6 +12,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 // import classes from "*.module.css";
 import mainData from "./mainData";
+import { UpperCaseLetterName } from "./constVariables";
 
 const columnStyles = makeStyles({
   allPokemonsBox: {
@@ -26,9 +27,6 @@ const columnStyles = makeStyles({
     textAlign: "center",
   },
 });
-
-const UpperCaseLetterName = (name) =>
-  name.charAt(0).toUpperCase() + name.slice(1);
 
 const AllPokemons = (props) => {
   const { history } = props;
