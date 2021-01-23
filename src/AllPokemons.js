@@ -30,7 +30,8 @@ const columnStyles = makeStyles({
 const UpperCaseLetterName = (name) =>
   name.charAt(0).toUpperCase() + name.slice(1);
 
-const AllPokemons = () => {
+const AllPokemons = (props) => {
+  const { history } = props;
   const classes = columnStyles();
   const [pokemonData, setPokemonData] = useState(mainData);
 
@@ -41,7 +42,7 @@ const AllPokemons = () => {
 
     return (
       <Grid item xs={4} key={pokemonId}>
-        <Card>
+        <Card onClick={() => history.push(`/${pokemonId}`)}>
           <CardMedia
             className={classes.cardMedia}
             image={sprite}
