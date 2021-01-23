@@ -1,7 +1,15 @@
-import React from "react";
-import { AppBar, Toolbar, Grid, Card, CardContent } from "@material-ui/core";
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Grid,
+  Card,
+  CardContent,
+  CircularProgress,
+} from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 // import classes from "*.module.css";
+import mainData from "./mainData";
 
 const columnStyles = makeStyles({
   allPokemonsBox: {
@@ -21,20 +29,23 @@ const singlePokemonCard = () => {
   );
 };
 
-const allPokemons = () => {
+const AllPokemons = () => {
   const classes = columnStyles();
+  const [pokemonData, setPokemonData] = useState(mainData);
   return (
     <>
       <AppBar position="static">
         <Toolbar />
       </AppBar>
-      <Grid container spacing={2} className={classes.allPokemonsBox}>
-        {singlePokemonCard()}
-        {singlePokemonCard()}
-        {singlePokemonCard()}
-      </Grid>
+      {pokemonData ? (
+        <Grid container spacing={2} className={classes.allPokemonsBox}>
+          {Object.keys(pokemonData).map((pokemonId) => AllPokemons(pokemonId))}
+        </Grid>
+      ) : (
+        <CircularProgress />
+      )}
     </>
   );
 };
 
-export default allPokemons;
+export default AllPokemons;
