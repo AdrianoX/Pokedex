@@ -1,15 +1,28 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from "react";
-import mainData from "./mainData";
-import { Typography, Link } from "@material-ui/core";
+import React, { useEffect, useState } from "react";
+// import mainData from "./mainData";
+import { Typography, Link, CircularProgress, Button } from "@material-ui/core";
 import { UpperCaseLetterName } from "./constVariables";
+import axios from "axios";
 
 const SinglePokemon = (props) => {
-  const { match } = props;
+  const { history, match } = props;
   const { params } = match;
   const { pokemonId } = params;
-  const [pokemon, setPokemon] = useState(mainData[`${pokemonId}`]);
+  const [pokemon, setPokemon] = useState(undefined);
   //   return <div> {`Single pokemon page -> Pokemon Number: ${pokemonId}`}</div>;
+
+  useEffect(() => {
+    axios
+      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
+      .then(function (response) {
+        const { data } = response;
+        setPokemon(data);
+      })
+      .catch(function (error) {
+        setPokemon(false);
+      });
+  }, [pokemonId]);
 
   const createPokemonStats = () => {
     const { name, id, species, height, weight, types, sprites } = pokemon;
@@ -42,7 +55,18 @@ const SinglePokemon = (props) => {
     );
   };
 
-  return <>{createPokemonStats()};</>;
+  return (
+    <>
+      {pokemon === undefined && <CircularProgress />}
+      {pokemon !== undefined && pokemon && createPokemonStats(pokemon)}
+      {pokemon === false && <Typography> Pokemon not found</Typography>}
+      {pokemon !== undefined && (
+        <Button variant="contained" onClick={() => history.push("/")}>
+          back to pokedex
+        </Button>
+      )}
+    </>
+  );
 };
 
 export default SinglePokemon;
