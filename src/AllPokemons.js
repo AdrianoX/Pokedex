@@ -8,15 +8,16 @@ import {
   CardMedia,
   CircularProgress,
   Typography,
+  TextField,
 } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { fade, makeStyles } from "@material-ui/core/styles";
 // import classes from "*.module.css";
 // import mainData from "./mainData";
 import { UpperCaseLetterName } from "./constVariables";
 import axios from "axios";
 import SearchIcon from "@material-ui/icons/Search";
 
-const columnStyles = makeStyles({
+const columnStyles = makeStyles((theme) => ({
   allPokemonsBox: {
     paddingRight: "75px",
     paddingLeft: "75px",
@@ -28,7 +29,23 @@ const columnStyles = makeStyles({
   cardContent: {
     textAlign: "center",
   },
-});
+  searchBar: {
+    display: "flex",
+    paddingLeft: "20px",
+    paddingRight: "20px",
+    marginBottom: "5px",
+    paddingTop: "5px",
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+  },
+  searchIcon: {
+    alignSelf: "flex-end",
+    marginBottom: "5px",
+  },
+  searchInput: {
+    widht: "200px",
+    margin: "5px",
+  },
+}));
 
 const AllPokemons = (props) => {
   const { history } = props;
@@ -80,8 +97,9 @@ const AllPokemons = (props) => {
     <>
       <AppBar position="static">
         <Toolbar>
-          <div>
-            <SearchIcon />
+          <div className={classes.searchBar}>
+            <SearchIcon className={classes.searchIcon} />
+            <TextField className={classes.searchInput} />
           </div>
         </Toolbar>
       </AppBar>
