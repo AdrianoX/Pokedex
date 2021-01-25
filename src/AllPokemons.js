@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 // import mainData from "./mainData";
 import { UpperCaseLetterName } from "./constVariables";
 import axios from "axios";
+import SearchIcon from "@material-ui/icons/Search";
 
 const columnStyles = makeStyles({
   allPokemonsBox: {
@@ -78,7 +79,11 @@ const AllPokemons = (props) => {
   return (
     <>
       <AppBar position="static">
-        <Toolbar />
+        <Toolbar>
+          <div>
+            <SearchIcon />
+          </div>
+        </Toolbar>
       </AppBar>
       {pokemonData ? (
         <Grid container spacing={2} className={classes.allPokemonsBox}>
