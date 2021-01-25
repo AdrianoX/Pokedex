@@ -16,6 +16,7 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import { UpperCaseLetterName } from "./constVariables";
 import axios from "axios";
 import SearchIcon from "@material-ui/icons/Search";
+// import styles from "./Header.module.scss";
 
 const columnStyles = makeStyles((theme) => ({
   allPokemonsBox: {
@@ -33,8 +34,10 @@ const columnStyles = makeStyles((theme) => ({
     display: "flex",
     paddingLeft: "20px",
     paddingRight: "20px",
-    marginBottom: "5px",
-    paddingTop: "5px",
+    // marginLeft: "1550px",
+    // position: "screenright",
+    // marginBottom: "5px",
+    // paddingTop: "-5px",
     backgroundColor: fade(theme.palette.common.white, 0.15),
   },
   searchIcon: {
@@ -43,7 +46,11 @@ const columnStyles = makeStyles((theme) => ({
   },
   searchInput: {
     widht: "200px",
+    // height: "40px",
     margin: "5px",
+  },
+  headerText: {
+    marginLeft: "555px",
   },
 }));
 
@@ -51,6 +58,11 @@ const AllPokemons = (props) => {
   const { history } = props;
   const classes = columnStyles();
   const [pokemonData, setPokemonData] = useState({});
+  const [filter, setFilter] = useState("");
+
+  const searchBarInput = (e) => {
+    setFilter(e.target.value);
+  };
 
   useEffect(() => {
     axios
@@ -80,6 +92,8 @@ const AllPokemons = (props) => {
     return (
       <Grid item xs={4} key={pokemonId}>
         <Card onClick={() => history.push(`/pokemon/${name}`)}>
+          {" "}
+          {/* <-- url extension v2 */}
           <CardMedia
             className={classes.cardMedia}
             image={sprite}
@@ -99,14 +113,28 @@ const AllPokemons = (props) => {
         <Toolbar>
           <div className={classes.searchBar}>
             <SearchIcon className={classes.searchIcon} />
-            <TextField className={classes.searchInput} />
+            <TextField
+              onChange={searchBarInput}
+              className={classes.searchInput}
+              label="Pokemon"
+              variant="standard"
+            />
           </div>
+          <Typography
+            align="center"
+            variant="h4"
+            className={classes.headerText}
+          >
+            PokedeX
+          </Typography>
         </Toolbar>
       </AppBar>
       {pokemonData ? (
         <Grid container spacing={2} className={classes.allPokemonsBox}>
-          {Object.keys(pokemonData).map((pokemonId) =>
-            singlePokemonCard(pokemonId)
+          {Object.keys(pokemonData).map(
+            (pokemonId) =>
+              pokemonData[pokemonId].name.includes(filter) && // filter condition [CL -> OR ?] Check later...
+              singlePokemonCard(pokemonId)
           )}
         </Grid>
       ) : (
