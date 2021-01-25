@@ -61,7 +61,7 @@ const AllPokemons = (props) => {
 
     return (
       <Grid item xs={4} key={pokemonId}>
-        <Card onClick={() => history.push(`/${pokemonId}`)}>
+        <Card onClick={() => history.push(`/pokemon/${name}`)}>
           <CardMedia
             className={classes.cardMedia}
             image={sprite}
