@@ -40,6 +40,7 @@ const columnStyles = makeStyles((theme) => ({
     textAlign: "center",
   },
   searchBar: {
+    marginLeft: "55px",
     display: "flex",
     paddingLeft: "20px",
     paddingRight: "20px",
@@ -56,20 +57,20 @@ const columnStyles = makeStyles((theme) => ({
   searchInput: {
     widht: "200px",
     // height: "40px",
-    margin: "5px",
+    marginBottom: "5px",
   },
   headerText: {
-    marginLeft: "555px",
+    marginLeft: "495px",
     // fontFamily: "Hanalei",
     // fontFamily: "Rock Salt",
     // fontFamily: "Orbitron",
     fontFamily: "Monoton",
     fontSize: "45px",
-    color: "red",
+    color: "#FF0000",
   },
   logo: {
-    height: "35px",
-    width: "35px",
+    height: "45px",
+    width: "45px",
   },
 }));
 
