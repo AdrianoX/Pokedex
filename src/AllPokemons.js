@@ -18,6 +18,14 @@ import axios from "axios";
 import SearchIcon from "@material-ui/icons/Search";
 // import styles from "./Header.module.scss";
 
+// import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
+
+// const theme = createMuiTheme({
+//   typography: {
+//     fontFamily: ["Press Start 2P", "cursive"].join(","),
+//   },
+// });
+
 const columnStyles = makeStyles((theme) => ({
   allPokemonsBox: {
     paddingRight: "75px",
@@ -51,6 +59,9 @@ const columnStyles = makeStyles((theme) => ({
   },
   headerText: {
     marginLeft: "555px",
+    fontFamily: "Potta One",
+    fontSize: "45px",
+    color: "red",
   },
 }));
 
@@ -120,15 +131,19 @@ const AllPokemons = (props) => {
               variant="standard"
             />
           </div>
+          {/* <ThemeProvider theme={theme}> */}
           <Typography
             align="center"
             variant="h4"
             className={classes.headerText}
           >
+            {/* <h3 style={{ fontFamily: "Press Start 2P" }}>PokedeX</h3> */}
             PokedeX
           </Typography>
+          {/* </ThemeProvider> */}
         </Toolbar>
       </AppBar>
+
       {pokemonData ? (
         <Grid container spacing={2} className={classes.allPokemonsBox}>
           {Object.keys(pokemonData).map(
