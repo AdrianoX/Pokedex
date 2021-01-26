@@ -6,7 +6,6 @@ import SinglePokemon from "./SinglePokemon";
 function App() {
   return (
     <Switch>
-      {/* <Route exact path="/" render={(props) => <AllPokemons {...props} />} /> */}
       <Route exact path="/" component={AllPokemons} />
       <Route
         exact

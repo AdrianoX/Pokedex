@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useEffect, useState } from "react";
-// import mainData from "./mainData";
 import { Typography, Link, CircularProgress, Button } from "@material-ui/core";
 import { UpperCaseLetterName } from "./constVariables";
 import axios from "axios";
@@ -16,7 +15,7 @@ const columnStyles = makeStyles((theme) => ({
     marginLeft: "20px",
     marginTop: "5px",
     borderColor: "red",
-    border: "2px solid red",
+    border: "1px solid red",
     borderRadius: "5px",
   },
 }));
@@ -27,7 +26,6 @@ const SinglePokemon = (props) => {
   const { params } = match;
   const { pokemonId } = params;
   const [pokemon, setPokemon] = useState(undefined);
-  //   return <div> {`Single pokemon page -> Pokemon Number: ${pokemonId}`}</div>;
 
   useEffect(() => {
     axios
