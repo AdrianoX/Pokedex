@@ -16,6 +16,7 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import { UpperCaseLetterName } from "./constVariables";
 import axios from "axios";
 import SearchIcon from "@material-ui/icons/Search";
+import { Link } from "react-router-dom";
 // import styles from "./Header.module.scss";
 
 // import { ThemeProvider, createMuiTheme } from "@material-ui/core/styles";
@@ -59,9 +60,16 @@ const columnStyles = makeStyles((theme) => ({
   },
   headerText: {
     marginLeft: "555px",
-    fontFamily: "Potta One",
+    // fontFamily: "Hanalei",
+    // fontFamily: "Rock Salt",
+    // fontFamily: "Orbitron",
+    fontFamily: "Monoton",
     fontSize: "45px",
     color: "red",
+  },
+  logo: {
+    height: "35px",
+    width: "35px",
   },
 }));
 
@@ -140,6 +148,20 @@ const AllPokemons = (props) => {
             {/* <h3 style={{ fontFamily: "Press Start 2P" }}>PokedeX</h3> */}
             PokedeX
           </Typography>
+          <Link
+            onClick={() =>
+              window.open(
+                "https://www.youtube.com/watch?v=EE-xtCF3T94&ab_channel=CamdenPowell",
+                "_blank"
+              )
+            }
+          >
+            <img
+              src="https://i.postimg.cc/Lsw-mpF41/14.png"
+              alt="logo"
+              className={classes.logo}
+            />
+          </Link>
           {/* </ThemeProvider> */}
         </Toolbar>
       </AppBar>
