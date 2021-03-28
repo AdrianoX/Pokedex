@@ -153,7 +153,7 @@ const AllPokemons = (props) => {
           )}
         </Grid>
       ) : (
-        <CircularProgress /> // CR 2 bt2
+        <CircularProgress /> 
       )}
     </>
   );
