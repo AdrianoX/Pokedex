@@ -59,7 +59,7 @@ const AllPokemons = (props) => {
   const { history } = props;
   const classes = columnStyles();
   const [pokemonData, setPokemonData] = useState({});
-  const [filter, setFilter] = useState(""); // TR 51 CL GIT
+  const [filter, setFilter] = useState("");
 
   const searchBarInput = (e) => {
     setFilter(e.target.value);
