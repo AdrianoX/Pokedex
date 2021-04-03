@@ -29,7 +29,7 @@ const SinglePokemon = (props) => {
 
   useEffect(() => {
     axios
-      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`)
+      .get(`https://pokeapi.co/api/v2/pokemon/${pokemonId}/`) // fetch st/re ?
       .then(function (response) {
         const { data } = response;
         setPokemon(data);
